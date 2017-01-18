@@ -1,0 +1,83 @@
+
+: cascade "include/layout.tx"
+
+: override content -> {
+
+<p>"ある時刻(0時〜23時)"が、指定した時間の範囲内に含まれるかを調べます。</p>
+<p>ただし、以下のような条件を満たすこと。</p>
+<ul>
+    <li>ある時刻と時間の範囲(開始時刻と終了時刻)を受け取る。</li>
+    <li>時刻は、6時であればのような指定でよく、分単位は問いません。</li>
+    <li>時刻の判定は、開始時刻を含み、終了時刻は含まないと判断すること。</li>
+    <li>ただし、開始時刻と終了時刻が同じ場合は含むと判断すること。</li>
+    <li>開始時刻が22時で、終了時刻が5時というような指定をされても動作すること。</li>
+</ul>
+
+<form id="include_check" action="/timerange" method="post">
+    <table>
+        <tr>
+            <td>開始時刻</td>
+            <td>
+                <select form="include_check" name="begin">
+                : for [0..23] -> $i {
+                      <option value=<: $i :>
+                      : if $i == $begin {
+                            selected="selected"
+                      : }
+                      >
+                      <: $i :></option>
+                : }
+                </select>時
+            : if $begin == '' {
+                  <td>開始時刻を入力してください。</td>
+            : }
+            </td>            
+        </tr>
+        <tr>
+            <td>終了時刻</td>
+            <td>
+                <select form="include_check" name="end">
+                : for [0..23] -> $i {
+                      <option value=<: $i :>
+                      : if $i == $end {
+                            selected="selected"
+                      : }
+                      >
+                      <: $i :></option>
+                : }
+                </select>時
+            </td>
+            : if $end == '' {
+                <td>終了時刻を入力してください</td>
+            : }
+        </tr>
+        <tr>
+            <td>判定時刻</td>
+            <td>
+                <select form="include_check" name="target">
+                : for [0..23] -> $i {
+                    <option value=<: $i :>
+                    : if $i == $target {
+                          selected="selected"
+                    : }
+                    >
+                    <: $i :></option>
+                : }
+                </select>時
+            </td>
+            : if $target == '' {
+                  <td>判定時刻を入力してください。</td>
+            : }
+        </tr>
+        <tr>
+            <td><input type="submit" value="check!"></td>
+            <td>
+            : if defined($result) && $result != '' {
+                  <: $target :>時は<: $begin :>時と<: $end :>時の範囲に<: $result :>
+            : }
+            <td>
+        </tr>
+    </table>
+</form>
+
+: }

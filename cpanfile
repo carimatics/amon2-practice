@@ -1,3 +1,4 @@
+requires 'Data::Validator', '1.07';
 requires 'IO::Interface', '1.09';
 requires 'Amon2', '6.13';
 requires 'Crypt::CBC';

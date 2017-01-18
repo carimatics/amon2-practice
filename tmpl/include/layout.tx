@@ -27,14 +27,12 @@
     <div class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">MyApp</a>
+                <a class="navbar-brand" href="/">MyApp</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
+                    <li class="<: if $page == 'index' { 'active' } :>"><a href="/">Home</a></li>
+                    <li class="<: if $page == 'timerange' {'active'} :>"><a href="/timerange">Time Range</a></li>
                 </ul>
             </div>
         </div><!-- /.container -->
