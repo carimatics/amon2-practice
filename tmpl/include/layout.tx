@@ -31,8 +31,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="<: if $page == 'index' { 'active' } :>"><a href="/">Home</a></li>
-                    <li class="<: if $page == 'timerange' {'active'} :>"><a href="/timerange">Time Range</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/timerange">Time Range</a></li>
                 </ul>
             </div>
         </div><!-- /.container -->
